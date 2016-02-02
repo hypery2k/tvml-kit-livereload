@@ -15,7 +15,7 @@ npm install tvml-kit-livereload --save-dev
 Mainly used for integration in other Tools, like Grunt or WebPack
 
 ```
-varport = 9000;
+var port = 9000;
 var livereload = require('tvml-kit-livereload');
 // start server
 livereload.start(9000, function(io){
