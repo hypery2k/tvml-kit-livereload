@@ -1,8 +1,7 @@
-#!/usr/bin/env node
 'use strict';
 
 var fs = require('fs');
-var livereload = require('./src/livereload');
+var livereload = require('./lib/livereload');
 var uglifyJS = require('uglify-js');
 var socket = require('socket.io');
 
@@ -38,7 +37,7 @@ module.exports = {
         var updatedFileContent = fileContents.replace('App.onLaunch = function () {', `App.onLaunch = function () {
   liveReload.connect();`);
         // fill in app template
-        var result = require('./src/app.tmpl.js')(updatedFileContent);
+        var result = require('./lib/app.tmpl.js')(updatedFileContent);
         // return result
         cb(result);
       }
