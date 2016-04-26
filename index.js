@@ -41,7 +41,8 @@ module.exports = {
       }
     }
     // TODO use uglify-js for sourcemap
-    var updatedFileContent = fileContents.replace('App.onLaunch = function () {', `App.onLaunch = function () {
+    var options = fileContents.match(/App.onLaunch = function \((.*)\) {/)[1];
+    var updatedFileContent = fileContents.replace(/App.onLaunch = function \((.*)\) {/, `App.onLaunch = function (${options}) {
   liveReload.connect();`);
     // fill in app template
     var result = require('./lib/app.tmpl.js')(updatedFileContent);
