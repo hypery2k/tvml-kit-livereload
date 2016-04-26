@@ -7,19 +7,25 @@ var socket = require('socket.io');
 
 var io;
 
+function logDebug(msg, data) {
+  if (console && console.debug) {
+    console.debug(msg, data);
+  }
+}
+
 module.exports = {
   start: function (port, cb) {
     io = socket(port || 9000);
     io.serveClient(false);
     io.on('connection', function (socket) {
-      console.debug('socket.io connection');
+      logDebug('socket.io connection');
 
       socket.on('event', function (data) {
-        console.debug('socket.io data:', data);
+        logDebug('socket.io data:', data);
       });
 
       socket.on('disconnect', function () {
-        console.debug('socket.io disconnect');
+        logDebug('socket.io disconnect');
       });
     });
     // return io object
@@ -40,19 +46,29 @@ module.exports = {
         throw err;
       }
     }
-    // TODO use uglify-js for sourcemap
-    var options = fileContents.match(/App.onLaunch = function \((.*)\) {/)[1];
-    var updatedFileContent = fileContents.replace(/App.onLaunch = function \((.*)\) {/, `App.onLaunch = function (${options}) {
-  liveReload.connect();`);
+    var updatedFileContent
+    var match = fileContents.match(/App.onLaunch = function \((.*)\) {/);
+    var options = match ? match[1] : false;
+    if (options) {
+      updatedFileContent = fileContents.replace(/App.onLaunch = function \((.*)\) {/, `App.onLaunch = function (${options}) {
+  liveReload.connect('${connectURL}', App, ${options});`);
+    } else {
+      updatedFileContent = fileContents.replace(/App.onLaunch = function \((.*)\) {/, `App.onLaunch = function () {
+  liveReload.connect('${connectURL}', App);`);
+    }
     // fill in app template
     var result = require('./lib/app.tmpl.js')(updatedFileContent);
     // return result
     return result;
   },
   reload: function () {
-    io.emit('live-reload');
+    if (io) {
+      io.emit('live-reload');
+    }
   },
   stop: function () {
-    io.close();
+    if (io) {
+      io.close();
+    }
   }
 };
