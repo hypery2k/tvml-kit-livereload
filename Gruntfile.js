@@ -79,8 +79,7 @@ module.exports = function (grunt) {
       dist: {
         files: {
           '<%= app.dist %>/index.js': 'index.js',
-          '<%= app.dist %>/lib/app.tmpl.js': '<%= app.src %>/app.tmpl.js',
-          '<%= app.dist %>/lib/livereload.js': '<%= app.src %>/livereload.js'
+          '<%= app.dist %>/lib/app.tmpl.js': '<%= app.src %>/*.js'
         }
       },
       options: {
@@ -116,7 +115,6 @@ module.exports = function (grunt) {
     'usebanner'
   ]);
   grunt.registerTask('check', [
-    'jshint',
     'build'
   ]);
 
