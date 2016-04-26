@@ -25,27 +25,28 @@ module.exports = {
     // return io object
     cb(io);
   },
-  prepareApplicationJS: function (filename, port, cb) {
+  prepareApplicationJS: function (filename, port) {
     var file = filename || 'application.js';
     var connectURL = 'http://localhost:' + (port || '9000');
-    fs.readFile(file, 'utf8', (err, fileContents)=> {
-      if (err) {
-        try {
-          fileContents = filename;
-        } catch (e) {
-          console.error(err);
-          throw err;
-        }
-      }
-      // TODO use uglify-js for sourcemap
-      var updatedFileContent = fileContents.replace('App.onLaunch = function () {', `App.onLaunch = function () {
-  liveReload.connect();`);
-      // fill in app template
-      var result = require('./lib/app.tmpl.js')(updatedFileContent);
-      // return result
-      cb(result);
 
-    });
+    var fileContents;
+    try {
+      fileContents = fs.readFileSync(file, 'utf8');
+    } catch (e) {
+      try {
+        fileContents = filename;
+      } catch (e) {
+        console.error(err);
+        throw err;
+      }
+    }
+    // TODO use uglify-js for sourcemap
+    var updatedFileContent = fileContents.replace('App.onLaunch = function () {', `App.onLaunch = function () {
+  liveReload.connect();`);
+    // fill in app template
+    var result = require('./lib/app.tmpl.js')(updatedFileContent);
+    // return result
+    return result;
   },
   reload: function () {
     io.emit('live-reload');

@@ -20,9 +20,8 @@ var livereload = require('tvml-kit-livereload');
 // start server
 livereload.start(9000, function(io){
   // add reload function in app
-  livereload.prepareApplicationJS(__dirname + '/application.js', 'http://localhost:9001', function (updateAppJS) {
-    // write updated application.js back
-  });
+  var updateAppJS = livereload.prepareApplicationJS(__dirname + '/application.js');
+  write updated application.js back
   // bind reload, e.g. in WebPack or watch
   livereload.reload();
 });
