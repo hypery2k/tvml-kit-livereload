@@ -29,3 +29,11 @@ livereload.start(9000, function(io){
   livereload.reload();
 });
 ```
+
+## Thanks
+
+Thanks to [joshhunt](https://github.com/joshhunt). [His project](https://github.com/joshhunt/tvos-au-vod) was base for this.
+
+## License
+
+MIT, Copyright 2016 Martin Reinhardt
