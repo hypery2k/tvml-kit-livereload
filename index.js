@@ -13,6 +13,14 @@ function logDebug(msg, data) {
   }
 }
 
+function logError(msg, data) {
+  if (data) {
+    console.error(msg + ': ' + data);
+  } else {
+    console.error(msg);
+  }
+}
+
 module.exports = {
   start: function (port, cb) {
     io = socket(port || 9000);
@@ -26,6 +34,10 @@ module.exports = {
 
       socket.on('disconnect', function () {
         logDebug('socket.io disconnect');
+      });
+      socket.on('error', function (errorDetails) {
+        logError('Could not create connection', errorDetails);
+        throw new Error();
       });
     });
     // return io object
@@ -42,11 +54,11 @@ module.exports = {
       try {
         fileContents = filename;
       } catch (e) {
-        console.error(err);
-        throw err;
+        console.error(e);
+        throw e;
       }
     }
-    var updatedFileContent
+    var updatedFileContent;
     var match = fileContents.match(/App.onLaunch = function \((.*)\) {/);
     var options = match ? match[1] : false;
     if (options) {
