@@ -1,6 +1,8 @@
 'use strict';
 
 var fs = require('fs');
+var path = require('path');
+var libPath = path.join(__dirname, 'lib');
 var livereload = require('./lib/livereload');
 var uglifyJS = require('uglify-js');
 var socket = require('socket.io');
@@ -69,7 +71,7 @@ module.exports = {
   liveReload.connect('${connectURL}', App);`);
     }
     // fill in app template
-    var result = require('./lib/app.tmpl.js')(updatedFileContent);
+    var result = require('./lib/app.tmpl.js')(libPath, updatedFileContent);
     // return result
     return result;
   },
