@@ -1,9 +1,9 @@
 # TVML LiveReload
 
-[![Build Status](https://travis-ci.org/hypery2k/tvml-kit-livereload.svg?branch=master)](https://travis-ci.org/hypery2k/tvml-kit-livereload) [![npm version](https://badge.fury.io/js/tvml-kit-livereload.svg)](http://badge.fury.io/js/tvml-kit-livereload) [![Dependency Status](https://david-dm.org/hypery2k/tvml-kit-livereload.svg)](https://david-dm.org/hypery2k/tvml-kit-livereload) [![devDependency Status](https://david-dm.org/hypery2k/tvml-kit-livereload/dev-status.svg)](https://david-dm.org/hypery2k/tvml-kit-livereload#info=devDependencies) 
+[![Build Status](https://travis-ci.org/hypery2k/tvml-kit-livereload.svg?branch=master)](https://travis-ci.org/hypery2k/tvml-kit-livereload) [![npm version](https://badge.fury.io/js/tvml-kit-livereload.svg)](http://badge.fury.io/js/tvml-kit-livereload) [![Code Climate](https://codeclimate.com/github/hypery2k/tvml-kit-livereload/badges/gpa.svg)](https://codeclimate.com/github/hypery2k/tvml-kit-livereload) [![Issue Count](https://codeclimate.com/github/hypery2k/tvml-kit-livereload/badges/issue_count.svg)](https://codeclimate.com/github/hypery2k/tvml-kit-livereload) [![Dependency Status](https://david-dm.org/hypery2k/tvml-kit-livereload.svg)](https://david-dm.org/hypery2k/tvml-kit-livereload) [![devDependency Status](https://david-dm.org/hypery2k/tvml-kit-livereload/dev-status.svg)](https://david-dm.org/hypery2k/tvml-kit-livereload#info=devDependencies)
 
 > A simple livereload for TVML-based JavaScript-Apps on tvOS
- 
+
 [![NPM](https://nodei.co/npm/tvml-kit-livereload.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/tvml-kit-livereload/)
 
 
