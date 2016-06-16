@@ -3,10 +3,10 @@
 module.exports = function (grunt) {
 
   // Load grunt tasks automatically
-  require('load-grunt-tasks')(grunt);
+  require('load-grunt-tasks')(grunt); // eslint-disable-line
 
   // Time how long tasks take. Can help when optimizing build times
-  require('time-grunt')(grunt);
+  require('time-grunt')(grunt); // eslint-disable-line
 
   // Configurable paths for the application
   var appConfig = {
@@ -42,24 +42,6 @@ module.exports = function (grunt) {
 
     // Project settings
     app: appConfig,
-
-
-    // Make sure code styles are up to par and there are no obvious mistakes
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
-      },
-      all: {
-        src: [
-          'Gruntfile.js',
-          '<%= app.src %>/scripts/{,*/}*.js'
-        ]
-      },
-      test: {
-        src: ['<%= app.test %>/spec/{,*/}*.js']
-      }
-    },
 
     // Empties folders to start fresh
     clean: {

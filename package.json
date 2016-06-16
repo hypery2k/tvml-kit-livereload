@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "npm install && grunt build",
-    "test": "npm install && jasmine-node test"
+    "test": "jasmine-node test",
+    "pretest": "eslint *.js && eslint *.js"
   },
   "repository": {
     "type": "git",
@@ -27,14 +28,15 @@
     "uglify-js": "2.6.1"
   },
   "devDependencies": {
+    "eslint": "2.12.0",
     "grunt": "^0.4.5",
     "grunt-banner": "0.6.0",
     "grunt-contrib-clean": "0.7.0",
     "grunt-contrib-copy": "0.8.2",
     "grunt-es6-transpiler": "1.0.2",
     "jasmine-node": "1.14.5",
-    "jshint-stylish": "2.1.0",
     "load-grunt-tasks": "3.4.0",
+    "nsp": "2.4.0",
     "time-grunt": "1.3.0"
   },
   "engine-strict": true,
