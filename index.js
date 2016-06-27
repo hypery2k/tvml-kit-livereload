@@ -4,7 +4,6 @@ var fs = require('fs');
 var path = require('path');
 var libPath = path.join(__dirname, 'lib');
 var livereload = require('./lib/livereload');
-var uglifyJS = require('uglify-js');
 var socket = require('socket.io');
 
 var io;
