@@ -27,7 +27,7 @@ function logError(msg, data) {
  * @param file object
  * @returns {*} file content as string
  */
-function readFileContent(file) {
+function readFileContent(file, filename) {
   var fileContents;
   try {
     fileContents = fs.readFileSync(file, 'utf8');
@@ -88,7 +88,7 @@ module.exports = {
   prepareApplicationJS: function (filename, port) {
     var file = filename || 'application.js';
     var connectURL = 'http://localhost:' + (port || '9000');
-    var updatedFileContent = updateFileContent(readFileContent(file), connectURL);
+    var updatedFileContent = updateFileContent(readFileContent(file, filename), connectURL);
 
     // fill in app template
     var result = require('./lib/app.tmpl.js')(libPath, updatedFileContent); // eslint-disable-line
