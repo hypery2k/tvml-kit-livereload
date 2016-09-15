@@ -49,17 +49,18 @@ function readFileContent(file) {
  * @returns {*} updated file content as string
  */
 function updateFileContent(fileContents, connectURL) {
-  var updatedFileContent,
-    match = fileContents.match(/App.onLaunch = function \((.*)\) {/),
-    options = match ? match[1] : false;
-  if (options) {
-    updatedFileContent = fileContents.replace(/App.onLaunch = function \((.*)\) {/, `App.onLaunch = function (${options}) {
-  liveReload.connect('${connectURL}', App, ${options});`);
-  } else {
-    updatedFileContent = fileContents.replace(/App.onLaunch = function \((.*)\) {/, `App.onLaunch = function () {
-  liveReload.connect('${connectURL}', App);`);
+  var regex = /(App.onLaunch[^\(]*\(\s*([^\)]*)\).*{)/;
+  var match = fileContents.match(regex);
+  var appOptions = match[2];
+  var liveReloadOptions, updatedFileContent;
+
+  if(appOptions) {
+    liveReloadOptions = `liveReload.connect('${connectURL}', App, ${appOptions});`;
+  }else {
+    liveReloadOptions = `liveReload.connect('${connectURL}', App);`;
   }
-  return updatedFileContent;
+
+  return fileContents.replace(regex, `$1\n  ${liveReloadOptions}`);
 }
 
 module.exports = {
