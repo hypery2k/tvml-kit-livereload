@@ -1,6 +1,6 @@
 {
   "name": "tvml-kit-livereload",
-  "version": "0.3.0",
+  "version": "0.3.1-dev",
   "description": "live reload for TVML-based tvOS Apps",
   "main": "index.js",
   "scripts": {
