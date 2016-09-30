@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm install && grunt build",
-    "test": "jasmine-node test",
+    "test": "jasmine-node test --junitreport",
     "pretest": "eslint *.js && eslint *.js && nsp check"
   },
   "repository": {

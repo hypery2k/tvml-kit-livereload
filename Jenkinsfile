@@ -4,7 +4,7 @@ properties properties: [
 ]
 
 node {
-  node('cordova') {
+  node('xcode') {
 
     def buildNumber = env.BUILD_NUMBER
     def workspace = env.WORKSPACE
@@ -27,8 +27,8 @@ node {
       }
 
       stage('Test') {
-        sh "PLATFORM=android npm run test"
-        sh "PLATFORM=ios npm run test"
+        sh "npm run test"
+        junit 'reports/TEST-*.xml'
       }
 
       stage('Publish NPM snapshot') {
