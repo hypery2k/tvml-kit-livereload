@@ -33,7 +33,7 @@ function readFileContent(file) {
     fileContents = fs.readFileSync(file, 'utf8');
   } catch (e) {
     try {
-      fileContents = filename;
+      fileContents = file;
     } catch (e) { // eslint-disable-line no-catch-shadow
       console.error(e);
       throw e;

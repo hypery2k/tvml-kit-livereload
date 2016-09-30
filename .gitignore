@@ -67,6 +67,7 @@ fastlane/screenshots
 
 # Node
 node_modules/*
+*.log
 
 # Dist
 dist/*

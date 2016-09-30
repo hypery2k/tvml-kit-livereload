@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm install && grunt build",
     "test": "jasmine-node test --junitreport",
-    "pretest": "eslint *.js && eslint *.js && nsp check"
+    "pretest": "eslint *.js && eslint lib/*.js && eslint test/*.js && nsp check"
   },
   "repository": {
     "type": "git",

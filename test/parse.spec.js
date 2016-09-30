@@ -1,13 +1,13 @@
-var path = require('path');
-var libPath = path.join(__dirname, '../lib/');
+var path = require('path'),
+  libPath = path.join(__dirname, '../lib/'),
+  livereload = require('../index.js');
 
 describe('parse', function () {
   'use strict';
 
-  var livereload = require('../index.js');
-
   it('should add live reload to application.js', function () {
-    var result = livereload.prepareApplicationJS(__dirname + '/application.js', '9001');
+    var applicationJS = path.resolve(__dirname, 'application.js');
+    var result = livereload.prepareApplicationJS(applicationJS, '9001');
     expect(result).toEqual(`var liveReload = require('${libPath}livereload');
 
 App.onLaunch = function () {
@@ -19,7 +19,8 @@ App.onLaunch = function () {
   });
 
   it('should add live reload to application.js with options', function () {
-    var result = livereload.prepareApplicationJS(__dirname + '/applicationWithOptions.js', '9001');
+    var applicationJS = path.resolve(__dirname, 'applicationWithOptions.js');
+    var result = livereload.prepareApplicationJS(applicationJS, '9001');
     expect(result).toEqual(`var liveReload = require('${libPath}livereload');
 
 App.onLaunch = function (options) {
