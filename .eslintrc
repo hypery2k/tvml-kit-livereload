@@ -9,6 +9,11 @@ env:
   jquery: false
   node: false
 
+parserOptions:
+  ecmaVersion: 8
+
+plugins: ["async-await"]
+
 # http://eslint.org/docs/rules/
 rules:
   # Possible Errors
@@ -209,3 +214,6 @@ rules:
   prefer-spread: 0
   prefer-template: 0
   require-yield: 0
+
+  async-await/space-after-async: 2
+  async-await/space-after-await: 2
