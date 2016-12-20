@@ -1,6 +1,6 @@
 {
   "name": "tvml-kit-livereload",
-  "version": "0.2.1",
+  "version": "0.3.3",
   "dependencies": {
     "abbrev": {
       "version": "1.0.9",
