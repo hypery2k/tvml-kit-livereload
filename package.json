@@ -1,12 +1,19 @@
 {
   "name": "tvml-kit-livereload",
-  "version": "0.3.2-dev",
+  "version": "0.3.2",
   "description": "live reload for TVML-based tvOS Apps",
   "main": "index.js",
   "scripts": {
     "build": "npm install && grunt build",
     "test": "jasmine-node test --junitreport",
-    "pretest": "eslint *.js && eslint lib/*.js && eslint test/*.js && nsp check"
+    "pretest": "eslint *.js && eslint lib/*.js && eslint test/*.js && nsp check",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "changelog:add": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md'",
+    "release:pre": "npm run build && npm run test",
+    "release:post": "npm run changelog && npm run changelog:add",
+    "release:major": "npm run release:pre && npm version major && npm run release:post && git push origin && git push origin --tags && npm publish",
+    "release:minor": "npm run release:pre && npm version minor && npm run release:post && git push origin && git push origin --tags && npm publish",
+    "release:patch": "npm run release:pre && npm version patch && npm run release:post && git push origin && git push origin --tags && npm publish"
   },
   "repository": {
     "type": "git",
@@ -26,7 +33,8 @@
     "source-map": "0.5.3"
   },
   "devDependencies": {
-    "eslint": "3.11.0",
+    "conventional-changelog-cli": "1.2.0",
+    "eslint": "3.7.0",
     "eslint-plugin-async-await": "0.0.0",
     "grunt": "^0.4.5",
     "grunt-banner": "0.6.0",
@@ -35,8 +43,8 @@
     "grunt-es6-transpiler": "1.0.2",
     "jasmine-node": "1.14.5",
     "load-grunt-tasks": "3.4.0",
-    "nsp": "2.6.2",
-    "time-grunt": "1.4.0"
+    "nsp": "2.4.0",
+    "time-grunt": "1.3.0"
   },
   "engine-strict": true,
   "engines": {
