@@ -43,7 +43,7 @@
     "grunt-es6-transpiler": "1.0.2",
     "jasmine-node": "1.14.5",
     "load-grunt-tasks": "3.4.0",
-    "nsp": "2.4.0",
+    "nsp": "2.7.0",
     "time-grunt": "1.3.0"
   },
   "engine-strict": true,
