@@ -6,7 +6,11 @@ env:
   - NODE_VERSION="4"
   - NODE_VERSION="5"
   - NODE_VERSION="6"
+  - NODE_VERSION="7"
+  - NODE_VERSION="8"
 script:
+  - npm run clean
+  - npm run build
   - npm run test
 before_install:
   - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
