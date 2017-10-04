@@ -1069,9 +1069,9 @@
       }
     },
     "source-map": {
-      "version": "0.5.3",
-      "from": "source-map@0.5.3",
-      "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.3.tgz"
+      "version": "0.6.1",
+      "from": "source-map@0.6.1",
+      "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz"
     },
     "sprintf-js": {
       "version": "1.0.3",
